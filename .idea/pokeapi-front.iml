@@ -9,5 +9,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="nt2-examen-c1-2023" />
   </component>
 </module>

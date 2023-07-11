@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../../Practica PNT2/pnt2-examen/nt2-examen-c1-2023/.idea/nt2-examen-c1-2023.iml" filepath="$PROJECT_DIR$/../../Practica PNT2/pnt2-examen/nt2-examen-c1-2023/.idea/nt2-examen-c1-2023.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/pokeapi-front.iml" filepath="$PROJECT_DIR$/.idea/pokeapi-front.iml" />
     </modules>
   </component>
