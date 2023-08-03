@@ -1,7 +1,10 @@
+import {PokemonList} from "../pokemon/PokemonList";
+
 export const Home = () => {
     return (
-        <div className={'container d-flex justify-content-center align-items-center pt-5'}>
-            <h1>Bienvenido al recetario</h1>
+        <div className={'container'}>
+            <h1 className={'row pt-5 justify-content-center text-black'}>Bienvenido al mundo Pokemón</h1>
+            <PokemonList></PokemonList>
         </div>
     )
 }
