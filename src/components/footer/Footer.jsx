@@ -1,6 +1,8 @@
+import logo from "../../assets/logo.png";
+
 export const Footer = () => {
     return (
-        <footer className="text-center text-lg-start bg-body-tertiary">
+        <footer className="text-center text-lg-start">
             <section className="d-flex justify-content-between p-4">
                 <div className="me-5">
                     <span>Get connected with us on social networks:</span>

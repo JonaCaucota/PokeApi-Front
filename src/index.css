@@ -22,25 +22,10 @@ span {
   font-family: "Fira Sans", sans-serif;
 }
 
-body,
-html,
-.App,
-#root,
-.auth-wrapper {
-  width: 100%;
-  height: 100%;
-}
 
 .navbar-light {
-  background-color: #ffffff;
+  background-color: #64F0FF;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-}
-
-.auth-wrapper {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: left;
 }
 
 .auth-inner {
@@ -83,13 +68,15 @@ html,
 }
 
 header {
-  height: 110px;
+  height: 128px;
+  background-color: #E0E7FF;
 }
 
 footer {
-  height: 420px;
+  height: 440px;
+  background-color: #E0E7FF;
 }
 
 main {
-  min-height: calc(100vh - 110px - 420px);
+  min-height: calc(100vh - 140px - 440px);
 }

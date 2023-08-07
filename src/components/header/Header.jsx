@@ -1,15 +1,15 @@
 import {Link} from "react-router-dom";
-import logo from "../../assets/logo.png";
+import pokemonLogo from "../../assets/pokemonLogo.png";
 
 export const Header = () => {
 
     return (
         <header>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary p-4">
+            <nav className="navbar navbar-expand-lg p-4">
                 <div className="container-fluid">
-                    <a className="navbar-brand me-5" href="#">
-                        <img src={logo} alt="Bootstrap" width="120" height="50"/>
-                    </a>
+                    <Link to={"/"} className="navbar-brand me-5" href="#">
+                        <img src={pokemonLogo} alt="Bootstrap" width="180" height="70"/>
+                    </Link>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item me-5 ms-lg-5">
@@ -26,7 +26,7 @@ export const Header = () => {
                                     </button>
                                 </Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item me-5">
                                 <Link to={"/sign-up"} className="text-decoration-none">
                                     <button className="nav-link">
                                         <h5>Sign Up</h5>
