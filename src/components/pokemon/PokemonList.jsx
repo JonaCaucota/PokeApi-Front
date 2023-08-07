@@ -1,17 +1,20 @@
 import {PokemonCard} from "./PokemonCard";
 import {useFetchAllPokemons} from "../../hooks/useFetchAllPokemons";
 import {useState} from "react";
+import pikaGif from '../../assets/pikachu.gif'
 
 export const PokemonList = () => {
 
-    const { pokemons, isLoading } = useFetchAllPokemons();
+    const {pokemons, isLoading} = useFetchAllPokemons();
     const [currentPage, setCurrentPage] = useState(0);
 
     if (isLoading && pokemons.length === 0) {
-        return <h1> Cargando...</h1>;
+        return <div className={'row justify-content-center'}>
+            <img className={'col-4 pt-5 pb-5'} src={pikaGif} alt={'PokeGif'} style={{width: '16rem', height: '20rem'}}/>
+        </div>
     }
     const filteredPokemons = () => {
-        return pokemons.slice(currentPage, currentPage+6)
+        return pokemons.slice(currentPage, currentPage + 6)
     }
     const nextPage = () => {
         if (currentPage + 6 < pokemons.length) {
@@ -19,7 +22,7 @@ export const PokemonList = () => {
         }
     }
     const prevPage = () => {
-        if(currentPage > 0) {
+        if (currentPage > 0) {
             setCurrentPage(currentPage - 6);
         }
     }

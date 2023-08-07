@@ -1,12 +1,15 @@
 import {useParams} from "react-router";
 import {useFetchPokemonById} from "../../hooks/useFetchPokemonById";
+import pikaGif from "../../assets/pikachu.gif";
 
 export const Pokemon = () => {
     const {pokemonId} = useParams();
     const { pokemon, isLoading } = useFetchPokemonById(pokemonId);
 
     if (isLoading) {
-        return <h1> Cargando..</h1>
+        return <div className={'row justify-content-center'}>
+            <img className={'col-4 pt-5 pb-5'} src={pikaGif} alt={'PokeGif'} style={{width: '16rem', height: '20rem'}}/>
+        </div>
     }
 
     const capitalizeFirstLetter = (word) => {

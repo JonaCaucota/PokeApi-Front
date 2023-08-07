@@ -1,10 +1,13 @@
 import {Link} from "react-router-dom";
 import {Pokemon} from "./Pokemon";
+import pikaGif from "../../assets/pikachu.gif";
 
 export const PokemonCard = ({id, image, name,types}) => {
 
     if(id === null) {
-        return <h1>Cargando..</h1>
+        return <div className={'row justify-content-center'}>
+            <img className={'col-4 pt-5 pb-5'} src={pikaGif} alt={'PokeGif'} style={{width: '16rem', height: '20rem'}}/>
+        </div>
     }
     const capitalizeFirstLetter = (word) => {
         return word.charAt(0).toUpperCase() + word.slice(1);
