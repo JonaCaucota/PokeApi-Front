@@ -1,5 +1,4 @@
 import {Link} from "react-router-dom";
-import {Pokemon} from "./Pokemon";
 import pikaGif from "../../assets/pikachu.gif";
 
 export const PokemonCard = ({id, image, name,types}) => {
@@ -16,7 +15,7 @@ export const PokemonCard = ({id, image, name,types}) => {
     return (
         <>
             <li key={id} className={`col-4 p-4 d-flex align-items-center justify-content-center`}>
-                <div className="card justify-content-center" style={{width: '20rem', height: '25rem'}}>
+                <div className="card justify-content-center pt-5" style={{width: '20rem', height: '25rem'}}>
                     <Link to={`/pokemon/${id}`}><img src={image} className="card-img-top" alt={name}
                                                                                         style={{width: '16rem', height: '16rem'}}></img></Link>
                     <div className="card-body">

@@ -4,7 +4,6 @@ import {useState} from "react";
 import pikaGif from '../../assets/pikachu.gif'
 
 export const PokemonList = () => {
-
     const {pokemons, isLoading} = useFetchAllPokemons();
     const [currentPage, setCurrentPage] = useState(0);
 

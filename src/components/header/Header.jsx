@@ -1,7 +1,25 @@
 import {Link} from "react-router-dom";
 import pokemonLogo from "../../assets/pokemonLogo.png";
+import {useState} from "react";
+
 
 export const Header = () => {
+
+    const [inputValue, setInputValue] = useState('');
+
+    const handleInputChange = (event) => {
+        setInputValue(event.target.value);
+    };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const url = pokeSearching();
+        // Realizar la redirección
+        window.location.href = url;
+    };
+
+    const pokeSearching = () => {
+        return `/pokemon/search/${inputValue}`;
+    }
 
     return (
         <header>
@@ -34,9 +52,18 @@ export const Header = () => {
                                 </Link>
                             </li>
                         </ul>
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-                            <button className="btn btn-outline-success" type="submit">Search</button>
+                        <form className="d-flex" onSubmit={(event) => handleSubmit(event)}>
+                            <input
+                                className="form-control me-2"
+                                type="text"
+                                value={inputValue}
+                                onChange={handleInputChange}
+                                placeholder="Search"
+                                aria-label="Search"
+                            />
+                            <button className="btn btn-outline-success" type="submit">
+                                Search
+                            </button>
                         </form>
                     </div>
                 </div>
