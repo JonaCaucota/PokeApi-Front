@@ -28,7 +28,7 @@ export const PokemonList = () => {
 
     return (
         <>
-            <ul className={'row justify-content-center pt-5 list-unstyled text-center'}>
+            <ul className={'row justify-content-center pt-2 list-unstyled text-center'}>
                 {
                     filteredPokemons().map((pokemonCard) => (
                         <PokemonCard key={pokemonCard.id} {...pokemonCard} ></PokemonCard>
