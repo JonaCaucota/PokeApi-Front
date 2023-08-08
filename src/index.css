@@ -143,3 +143,65 @@ main {
   text-decoration: none;
   color: black;
 }
+
+.gradient-grass {
+  width: 100%;
+  background: linear-gradient(to bottom, #9AD07F, white);
+}
+
+.gradient-fire {
+  width: 100%;
+  background: linear-gradient(to bottom, #F49753, white);
+}
+
+.gradient-water {
+  width: 100%;
+  background: linear-gradient(to bottom, #8CAAF0, white);
+}
+
+.gradient-bug {
+  width: 100%;
+  background: linear-gradient(to bottom, #B8C73C, white);
+}
+
+.gradient-normal {
+  width: 100%;
+  background: linear-gradient(to bottom, #CFCFBD, white);
+}
+
+.gradient-poison {
+  width: 100%;
+  background: linear-gradient(to bottom, #AA6DAA, white);
+}
+.gradient-electric {
+  width: 100%;
+  background: linear-gradient(to bottom, #F9DF7A, white);
+}
+
+.gradient-fairy {
+  width: 100%;
+  background: linear-gradient(to bottom, #EFAAB9, white);
+}
+
+.gradient-ground {
+  width: 100%;
+  background: linear-gradient(to bottom, #EDD185, white);
+}
+.gradient-fighting {
+  width: 100%;
+  background: linear-gradient(to bottom, #BB5A54, white);
+}
+
+.gradient-psychic {
+  width: 100%;
+  background: linear-gradient(to bottom, #F47FA2, white);
+}
+.gradient-rock {
+  width: 100%;
+  background: linear-gradient(to bottom, #C7B35F, white);
+}
+
+.gradient-ice {
+  width: 100%;
+  background: linear-gradient(to bottom, #B5E2E2, white);
+}
