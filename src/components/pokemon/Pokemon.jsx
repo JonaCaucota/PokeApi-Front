@@ -1,6 +1,12 @@
 import {useParams} from "react-router";
 import {useFetchPokemonById} from "../../hooks/useFetchPokemonById";
 import pikaGif from "../../assets/pikachu.gif";
+import hearth from "../../assets/hearth.jpg";
+import attack from "../../assets/attack.jpg";
+import speed from "../../assets/speed.jpg";
+import defense from "../../assets/defense.jpg";
+import height from "../../assets/height.jpg";
+import weight from "../../assets/weight.jpg";
 
 export const Pokemon = () => {
     const {pokemonId} = useParams();
@@ -18,29 +24,34 @@ export const Pokemon = () => {
 
     const capitalizedTypes = pokemon.types.map(type => capitalizeFirstLetter(type));
 
+    const classType = pokemon.types[0].toLowerCase();
     return (
         <>
-            <div className={'row mx-auto justify-content-center'}>
-                <div className={'col-4 text-center pt-5'}>
-                    <h1> Pokemón Description </h1>
-                </div>
-            </div>
-            <div className={'row justify-content-center pt-3 pb-5'}>
+            <div className={`row justify-content-center pt-5 pb-5 align-items-center`}>
                 <div className={'col-4'}>
-                    <div className={'text-center pt-5'}>
-                        <h1>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
-                        <img src={pokemon.image} alt={pokemon.name} style={{width: '16rem', height: '16rem'}}></img>
+                    <div className={`card text-center  gradient-${classType}`} style={{width: '25rem'}}>
+                        <img className="card-img-top p-5" src={pokemon.image} alt={pokemon.name} ></img>
+                            <div className="card-body">
+                                <h1 className="card-text">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
+                                <h4 className={'lh-2'}>{pokemon.description}</h4>
+                            </div>
                     </div>
                 </div>
                 <div className={'col-4 justify-content-center text-center'}>
-                    <h2>Types: {capitalizedTypes.join(' ')}</h2>
-                    <h2>HP: {pokemon.hp}</h2>
-                    <h2>Attack: {pokemon.attack}</h2>
-                    <h2>Defense: {pokemon.defense}</h2>
-                    <h2>Speed: {pokemon.speed}</h2>
-                    <h2>Height: {pokemon.height}</h2>
-                    <h2>Weight: {pokemon.weight}</h2>
-                    <h2>Description: {pokemon.description}</h2>
+                    <h2 className={'mb-5 fs-1'}>Pokemon Stats</h2>
+                    <div className={'pb-5'}>
+                        <h4 className={`type-box d-inline me-2 text-light me-4 ${capitalizedTypes[0].toLowerCase()}`}>{capitalizedTypes[0]}</h4>
+                        {capitalizedTypes[1] === undefined
+                            ? null : <h4 className={`type-box d-inline text-light  ${capitalizedTypes[1].toLowerCase()}`}>{capitalizedTypes[1]}</h4>}
+                    </div>
+                    <div>
+                        <h2><img src={hearth} alt={'Hearth'} style={{width:'2rem'}} className={'me-3'}></img> {pokemon.hp}</h2>
+                        <h2><img src={attack} alt={'Attack'} style={{width:'2rem'}} className={'me-3'}></img> {pokemon.attack}</h2>
+                        <h2><img src={defense} alt={'Defense'} style={{width:'2rem'}} className={'me-3'}></img> {pokemon.defense}</h2>
+                        <h2><img src={speed} alt={'Speed'} style={{width:'2rem'}} className={'me-3'}></img> {pokemon.speed}</h2>
+                        <h2><img src={height} alt={'Height'} style={{width:'2rem'}} className={'me-3'}></img> {pokemon.height < 10 ? `0${pokemon.height}` : pokemon.height}</h2>
+                        <h2><img src={weight} alt={'Weight'} style={{width:'2rem'}} className={'me-3'}></img> {pokemon.weight}</h2>
+                    </div>
                 </div>
             </div>
 

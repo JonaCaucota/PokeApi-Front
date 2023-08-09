@@ -1,7 +1,6 @@
 import {Header} from "../components/header/Header";
 import {Route, Routes} from "react-router-dom";
 import {Home} from "../components/home/Home";
-import {Authenticator} from "../components/login/Authenticator";
 import {SignIn} from "../components/login/SignIn";
 import {SignUp} from "../components/login/SignUp";
 import {Footer} from "../components/footer/Footer";
@@ -15,7 +14,6 @@ export const AppRouter = () => {
             <main className={'container'}>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/authenticator" element={<Authenticator />} />
                     <Route path="/sign-in" element={<SignIn></SignIn>} />
                     <Route path="/sign-up" element={<SignUp></SignUp>} />
                     <Route path="/pokemon/search/:pokemon" element={<PokemonListSearch></PokemonListSearch>} />
