@@ -139,6 +139,12 @@ main {
 
 
 }
+
+.favourite:hover {
+  transform: scale(1.055);
+  transition: all 0.5s ease;
+}
+
 .pokemon-card{
   text-decoration: none;
   color: black;

@@ -11,6 +11,7 @@ import weight from "../../assets/weight.jpg";
 export const Pokemon = () => {
     const {pokemonId} = useParams();
     const { pokemon, isLoading } = useFetchPokemonById(pokemonId);
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
     if (isLoading) {
         return <div className={'row justify-content-center'}>
@@ -39,7 +40,7 @@ export const Pokemon = () => {
                 </div>
                 <div className={'col-4 justify-content-center text-center'}>
                     <h2 className={'mb-5 fs-1'}>Pokemon Stats</h2>
-                    <div className={'pb-5'}>
+                    <div className={'pb-3'}>
                         <h4 className={`type-box d-inline me-2 text-light me-4 ${capitalizedTypes[0].toLowerCase()}`}>{capitalizedTypes[0]}</h4>
                         {capitalizedTypes[1] === undefined
                             ? null : <h4 className={`type-box d-inline text-light  ${capitalizedTypes[1].toLowerCase()}`}>{capitalizedTypes[1]}</h4>}
@@ -51,6 +52,12 @@ export const Pokemon = () => {
                         <h2><img src={speed} alt={'Speed'} style={{width:'2rem'}} className={'me-3'}></img> {pokemon.speed}</h2>
                         <h2><img src={height} alt={'Height'} style={{width:'2rem'}} className={'me-3'}></img> {pokemon.height < 10 ? `0${pokemon.height}` : pokemon.height}</h2>
                         <h2><img src={weight} alt={'Weight'} style={{width:'2rem'}} className={'me-3'}></img> {pokemon.weight}</h2>
+
+                        {isLoggedIn ?<div className={'pt-2 favourite backgroundEffect'}>
+                            <button className={'type-box p-2 fs-4'} >Add to favourite</button>
+                        </div> : null }
+
+
                     </div>
                 </div>
             </div>
