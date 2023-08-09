@@ -8,51 +8,42 @@ export const SignIn = () => {
     password: "",
   });
   const [errorCredentials, setErrorCredentials] = useState(null);
-  const handleEmailChange = (event) => {
-    setFormData({
-      email: event.target.value,
-      password: formData.password,
-    });
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
-  const handlePasswordChange = (event) => {
-    setFormData({
-      email: formData.email,
-      password: event.target.value,
-    });
-  };
-  const handleSubmit = (event) => {
-    //agregar Url de backend
-    const urlApiUsers = "http://localhost:3001/api/users/login"; //SACAR HARCODEADO
+
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Envía los datos al backend usando una solicitud HTTP (por ejemplo, fetch o axios)
-    fetch(urlApiUsers, {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.token) {
-          // El token se recibió correctamente
-          const token = data.token;
-          // Almacenar el token en el almacenamiento local (localStorage)
-          localStorage.setItem("token", token);
-          localStorage.setItem("mail", formData.email);
-          localStorage.setItem("_Id", data.user._id );
-          console.log("token: " + token);
-          // Hacer algo con el token, como guardarlo en el almacenamiento local o en las cookies. Para recuperarlo: localStorage.getItem("token")
-          navigate("/");
-        } else {
-          // No se recibió un token en la respuesta del backend
-          setErrorCredentials("Credenciales inválidas. Inténtalo de nuevo.");
-        }
-      })
-      .catch((error) => {
-        setErrorCredentials("Error de conexión. Inténtalo de nuevo.");
+
+    try {
+      const response = await fetch('http://localhost:8080/pokeapi/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        window.location.href = "/";
+        localStorage.setItem("isLoggedIn", "true");
+      } else {
+        console.error('Error al enviar el formulario:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+    }
   };
+
+
   return (
     <div className="auth-wrapper pt-lg-5 pb-lg-5">
       <div className="auth-inner">
@@ -64,8 +55,9 @@ export const SignIn = () => {
               type="email"
               className="form-control"
               placeholder="Enter email"
+              name="email"
               value={formData.email}
-              onChange={handleEmailChange}
+              onChange={handleInputChange}
             />
           </div>
 
@@ -76,7 +68,8 @@ export const SignIn = () => {
               className="form-control"
               placeholder="Enter password"
               value={formData.password}
-              onChange={handlePasswordChange}
+              name="password"
+              onChange={handleInputChange}
             />
           </div>
 

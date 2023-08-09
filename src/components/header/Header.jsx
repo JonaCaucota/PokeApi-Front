@@ -13,13 +13,14 @@ export const Header = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         const url = pokeSearching();
-        // Realizar la redirección
         window.location.href = url;
     };
 
     const pokeSearching = () => {
         return `/pokemon/search/${inputValue}`;
     }
+
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
     return (
         <header>
@@ -37,20 +38,34 @@ export const Header = () => {
                                     </button>
                                 </Link>
                             </li>
-                            <li className="nav-item me-5">
-                                <Link to={"/sign-in"} className="text-decoration-none">
-                                    <button className="nav-link">
-                                        <h5>Login</h5>
+                            {isLoggedIn ?
+                                <li>
+                                    <button className="nav-link" onClick={() => {
+                                        localStorage.removeItem("isLoggedIn");
+                                        window.location.href = "/";
+                                    }}>
+                                        <h5>Logout</h5>
                                     </button>
-                                </Link>
-                            </li>
-                            <li className="nav-item me-5">
-                                <Link to={"/sign-up"} className="text-decoration-none">
-                                    <button className="nav-link">
-                                        <h5>Sign Up</h5>
-                                    </button>
-                                </Link>
-                            </li>
+                                </li> :
+                                <>
+                                    <li className="nav-item me-5">
+                                        <Link to={"/sign-in"} className="text-decoration-none">
+                                            <button className="nav-link">
+                                                <h5>Login</h5>
+                                            </button>
+                                        </Link>
+                                    </li>
+                                    <li className="nav-item me-5">
+                                        <Link to={"/sign-up"} className="text-decoration-none">
+                                            <button className="nav-link">
+                                                <h5>Sign Up</h5>
+                                            </button>
+                                        </Link>
+                                    </li>
+                                </>
+
+                            }
+
                         </ul>
                         <form className="d-flex" onSubmit={(event) => handleSubmit(event)}>
                             <input

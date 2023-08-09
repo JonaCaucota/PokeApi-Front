@@ -1,8 +1,9 @@
 import { useState } from "react";
+import {Link} from "react-router-dom";
 
 export const SignUp = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
+    name: "",
     lastName: "",
     email: "",
     password: "",
@@ -12,63 +13,35 @@ export const SignUp = () => {
     console.log(formData);
   };
 
-  const handleFirstNameChange = (event) => {
-    // Actualiza el estado del formulario al cambiar el valor de first name, mantiene los otros values
-    setFormData({
-      firstName: event.target.value,
-      lastName: formData.lastName,
-      email: formData.email,
-      password: formData.password,
-    });
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
-
-  const handleLastNameChange = (event) => {
-    setFormData({
-      firstName: formData.firstName,
-      lastName: event.target.value,
-      email: formData.email,
-      password: formData.password,
-    });
-  };
-
-  const handleEmailChange = (event) => {
-    setFormData({
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: event.target.value,
-      password: formData.password,
-    });
-  };
-  const handlePasswordChange = (event) => {
-    setFormData({
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email,
-      password: event.target.value,
-    });
-  };
-
-  const handleSubmit = (event) => {
-    //agregar Url de backend
-    const urlApiUsers = "http://localhost:3001/api/users/"; //SACAR HARCODEADO
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Envía los datos al backend usando una solicitud HTTP (por ejemplo, fetch o axios)
-    fetch(urlApiUsers, {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Maneja la respuesta del backend si es necesario
-        setFormData(data);
-      })
-      .catch((error) => {
-        // Maneja los errores de la solicitud si es necesario
-        console.error(error);
+
+    try {
+      const response = await fetch('http://localhost:8080/pokeapi/usuarios', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        window.location.href = "/sign-in";
+      } else {
+        console.error('Error al enviar el formulario:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+    }
   };
 
   return (
@@ -82,9 +55,9 @@ export const SignUp = () => {
               type="text"
               className="form-control"
               placeholder="First name"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleFirstNameChange}
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
             />
           </div>
 
@@ -96,7 +69,7 @@ export const SignUp = () => {
               placeholder="Last name"
               name="lastName"
               value={formData.lastName}
-              onChange={handleLastNameChange}
+              onChange={handleInputChange}
             />
           </div>
 
@@ -108,7 +81,7 @@ export const SignUp = () => {
               placeholder="Enter email"
               name="email"
               value={formData.email}
-              onChange={handleEmailChange}
+              onChange={handleInputChange}
             />
           </div>
 
@@ -120,7 +93,7 @@ export const SignUp = () => {
               placeholder="Enter password"
               name="password"
               value={formData.password}
-              onChange={handlePasswordChange}
+              onChange={handleInputChange}
             />
           </div>
 
