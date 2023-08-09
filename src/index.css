@@ -144,9 +144,17 @@ main {
   color: black;
 }
 
+.grass {
+  background-color: #9AD07F;
+}
+
 .gradient-grass {
   width: 100%;
   background: linear-gradient(to bottom, #9AD07F, white);
+}
+
+.fire{
+  background-color: #F49753;
 }
 
 .gradient-fire {
@@ -154,9 +162,17 @@ main {
   background: linear-gradient(to bottom, #F49753, white);
 }
 
+.water{
+  background-color: #8CAAF0;
+}
+
 .gradient-water {
   width: 100%;
   background: linear-gradient(to bottom, #8CAAF0, white);
+}
+
+.bug {
+  background-color: #B8C73C;
 }
 
 .gradient-bug {
@@ -164,18 +180,35 @@ main {
   background: linear-gradient(to bottom, #B8C73C, white);
 }
 
+.normal {
+  background-color: #CFCFBD;
+}
+
 .gradient-normal {
   width: 100%;
   background: linear-gradient(to bottom, #CFCFBD, white);
+}
+
+.poison {
+  background-color: #AA6DAA;
 }
 
 .gradient-poison {
   width: 100%;
   background: linear-gradient(to bottom, #AA6DAA, white);
 }
+
+.electric {
+  background-color: #F9DF7A;
+}
+
 .gradient-electric {
   width: 100%;
   background: linear-gradient(to bottom, #F9DF7A, white);
+}
+
+.fairy {
+  background-color: #EFAAB9;
 }
 
 .gradient-fairy {
@@ -183,25 +216,71 @@ main {
   background: linear-gradient(to bottom, #EFAAB9, white);
 }
 
+.ground {
+  background-color: #EDD185;
+}
+
 .gradient-ground {
   width: 100%;
   background: linear-gradient(to bottom, #EDD185, white);
 }
+
+.fighting {
+  background-color: #BB5A54;
+}
+
 .gradient-fighting {
   width: 100%;
   background: linear-gradient(to bottom, #BB5A54, white);
 }
-
+.psychic {
+  background-color: #F47FA2;
+}
 .gradient-psychic {
   width: 100%;
   background: linear-gradient(to bottom, #F47FA2, white);
+}
+.rock {
+  background-color: #C7B35F;
 }
 .gradient-rock {
   width: 100%;
   background: linear-gradient(to bottom, #C7B35F, white);
 }
-
+.ice {
+  background-color: #B5E2E2;
+}
 .gradient-ice {
   width: 100%;
   background: linear-gradient(to bottom, #B5E2E2, white);
+}
+.flying{
+  background-color: #A890F0;
+}
+
+.gradient-ghost{
+  width: 100%;
+  background: linear-gradient(to bottom, #806F9D, white);
+}
+.gradient-dragon{
+  width: 100%;
+  background: linear-gradient(to bottom, #8859FA, white);
+}
+.dragon{
+  background-color: #8859FA;
+}
+.ghost {
+  background-color: #806F9D;
+}
+.type-box {
+  display: inline-block;
+  padding: 5px 15px;
+  border: 1px #888;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.type-container{
+  display: inline;
 }
