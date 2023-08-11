@@ -6,6 +6,7 @@ import {SignUp} from "../components/login/SignUp";
 import {Footer} from "../components/footer/Footer";
 import {Pokemon} from "../components/pokemon/Pokemon";
 import {PokemonListSearch} from "../components/pokemon/PokemonListSearch";
+import {FavPokemons} from "../components/pokemon/FavPokemons";
 
 export const AppRouter = () => {
     return (
@@ -18,6 +19,7 @@ export const AppRouter = () => {
                     <Route path="/sign-up" element={<SignUp></SignUp>} />
                     <Route path="/pokemon/search/:pokemon" element={<PokemonListSearch></PokemonListSearch>} />
                     <Route path="/pokemon/:pokemonId" element={<Pokemon></Pokemon>} />
+                    <Route path="/favourites/:id" element={<FavPokemons></FavPokemons>} />
                 </Routes>
             </main>
             <Footer></Footer>

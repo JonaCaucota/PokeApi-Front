@@ -7,8 +7,10 @@ export const useFetchAllPokemons = () => {
 
     const getPokemons = async() => {
         const allPokemons = await getAllPokemons();
-        setPokemons(allPokemons);
-        setIsLoading(false);
+        if(allPokemons.ok){
+            setPokemons(await allPokemons.json());
+            setIsLoading(false);
+        }
     }
 
     useEffect(() => {

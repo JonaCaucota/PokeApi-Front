@@ -39,14 +39,23 @@ export const Header = () => {
                                 </Link>
                             </li>
                             {isLoggedIn ?
-                                <li>
-                                    <button className="nav-link" onClick={() => {
-                                        localStorage.removeItem("isLoggedIn");
-                                        window.location.href = "/";
-                                    }}>
-                                        <h5>Logout</h5>
-                                    </button>
-                                </li> :
+                                <>
+                                    <li className="nav-item me-2 ms-lg-5">
+                                        <button className="nav-link" onClick={() => {
+                                            localStorage.removeItem("isLoggedIn");
+                                            window.location.href = "/";
+                                        }}>
+                                            <h5>Logout</h5>
+                                        </button>
+                                    </li>
+                                    <li className="nav-item me-5 ms-lg-5">
+                                        <Link to={`/favourites/${localStorage.getItem("userId")}`}>
+                                            <button className={"nav-link"}><h5>Favourites</h5></button>
+                                        </Link>
+                                    </li>
+                                </>
+
+                                :
                                 <>
                                     <li className="nav-item me-5">
                                         <Link to={"/sign-in"} className="text-decoration-none">
