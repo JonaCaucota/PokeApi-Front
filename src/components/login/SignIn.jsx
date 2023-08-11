@@ -35,6 +35,7 @@ export const SignIn = () => {
         console.log(data);
         window.location.href = "/";
         localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userId", data.usuario.userId);
       } else {
         console.error('Error al enviar el formulario:', response.statusText);
       }

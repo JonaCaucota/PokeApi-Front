@@ -12,7 +12,18 @@ export const Pokemon = () => {
     const {pokemonId} = useParams();
     const { pokemon, isLoading } = useFetchPokemonById(pokemonId);
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    const userId = localStorage.getItem("userId");
 
+    const pokemonFav = {
+        id: pokemon.id,
+        name: pokemon.name,
+        image: pokemon.image,
+        types: pokemon.types
+    }
+    const favourite = {
+        userId: userId,
+        pokemon: pokemonFav
+    }
     if (isLoading) {
         return <div className={'row justify-content-center'}>
             <img className={'col-4 pt-5 pb-5'} src={pikaGif} alt={'PokeGif'} style={{width: '16rem', height: '20rem'}}/>
@@ -25,13 +36,36 @@ export const Pokemon = () => {
 
     const capitalizedTypes = pokemon.types.map(type => capitalizeFirstLetter(type));
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const url = 'http://localhost:8080/pokeapi/pokemon/favourite/save/';
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(favourite),
+            });
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data);
+                window.location.href = "/";
+            } else {
+                console.error('Error al enviar el formulario:', favourite, await response.json());
+            }
+        } catch (error) {
+            console.error('Error al enviar el formulario:', error);
+        }
+    };
+
     const classType = pokemon.types[0].toLowerCase();
     return (
         <>
             <div className={`row justify-content-center pt-5 pb-5 align-items-center`}>
                 <div className={'col-4'}>
                     <div className={`card text-center  gradient-${classType}`} style={{width: '25rem'}}>
-                        <img className="card-img-top p-5" src={pokemon.image} alt={pokemon.name} ></img>
+                        <img className="card-img-top p-5" src={pokemon.image} alt={pokemon.name} style={{width: '25rem', height:'25rem'}} ></img>
                             <div className="card-body">
                                 <h1 className="card-text">{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h1>
                                 <h4 className={'lh-2'}>{pokemon.description}</h4>
@@ -54,7 +88,9 @@ export const Pokemon = () => {
                         <h2><img src={weight} alt={'Weight'} style={{width:'2rem'}} className={'me-3'}></img> {pokemon.weight}</h2>
 
                         {isLoggedIn ?<div className={'pt-2 favourite backgroundEffect'}>
-                            <button className={'type-box p-2 fs-4'} >Add to favourite</button>
+                            <form onSubmit={handleSubmit} >
+                                <button className={'type-box p-2 fs-3 favourite-card'} >Add to favourite</button>
+                            </form>
                         </div> : null }
 
 

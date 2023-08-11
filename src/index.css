@@ -139,6 +139,10 @@ main {
 
 
 }
+.favourite-card {
+  background-color: #FFCB05;
+  color: #4F4F4F;
+}
 
 .favourite:hover {
   transform: scale(1.055);
