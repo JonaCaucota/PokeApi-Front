@@ -7,7 +7,7 @@ export const PokemonList = () => {
     const {pokemons, isLoading} = useFetchAllPokemons();
     const [currentPage, setCurrentPage] = useState(0);
 
-    if (isLoading && pokemons.length === 0 && pokemons[0] !== null) {
+    if (isLoading) {
         return <div className={'row justify-content-center'}>
             <img className={'col-4 pt-5 pb-5'} src={pikaGif} alt={'PokeGif'} style={{width: '16rem', height: '20rem'}}/>
         </div>
