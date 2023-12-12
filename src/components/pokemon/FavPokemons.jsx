@@ -15,12 +15,12 @@ export const FavPokemons = () => {
 
     return (
         <>
-            <ul className={'row justify-content-center pt-2 list-unstyled text-center'}>
+            <ul className={'row justify-content-center pt-5 list-unstyled text-center'}>
                 {
                     pokemons.length !== 0 ?
                     pokemons.map((pokemonCard) => (
                         <PokemonCard key={pokemonCard.id} {...pokemonCard} ></PokemonCard>
-                    )): <h1>No pokemons</h1>
+                    )): <h1 className={'pt-5'}>No pokemons</h1>
                 }
             </ul>
         </>

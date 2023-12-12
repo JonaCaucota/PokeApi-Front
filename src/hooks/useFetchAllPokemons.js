@@ -12,6 +12,7 @@ export const useFetchAllPokemons = () => {
                 setPokemons(await allPokemons.json());
                 setIsLoading(false);
             } else {
+                setIsLoading(true)
                 console.error("Error fetching Pokémon data:", allPokemons.status);
             }
         } catch (error) {
